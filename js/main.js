@@ -18,6 +18,7 @@ const winningCombinations = {
 
 //variables
 let boardArray = ['', '', '', '', '', '', '', '', '',];
+let turn = 1
 let currentPlayer = "";
 let winner = "";
 
@@ -55,7 +56,7 @@ function initialize() {
 
 function render() {
     rendBoard();   //render the board
-    rendMessage();  //render a message
+    checkForWinner();  //checks for winner
     userInput(); //dynamically responds to user input
 }
 
@@ -71,7 +72,7 @@ function rendBoard() {
 }
 
 //Created a separate function called rendMessage, which I'll next inside of the main render function 
-function rendMessage () {
+function checkForWinner () {
     if (winner !== null) {
         return `It is ${currentPlayer.toUpperCase()}'s turn.`;
     } else if (winner === "T") {
@@ -85,13 +86,24 @@ function rendMessage () {
 //Seems like I need a function that handles event listeners, waiting for user input before proceeding.  I researched a bit and it doesn't seem like there's any way to hard code Javascript to pause and wait for input other than using a function that needs to be fulfilled by a user action.
 function userInput () {
     //waits for user input
-    //calls the render function, which loops back to WaitForUserInput
+    //calls the render function, which loops back UserInput
     //The conditions in rend message should eventually end the game
 }
 
 //handle a player clicking a square
 //Use jquery to grab elements from HTML
-//create an event listener that executes the render function 
+function handle() {
+    let tile1 = document.getElementById("tile 1")
+    tile1.addEventListener('click', () => {
+        let tile1Index = boardTiles.tile1; 
+        if (tile1Index !== 'red' || tile1Index !== 'blue' || tile1Index !== 'white' ) {
+            tile1Index = currentPlayer;
+            boardArray[0] = tile1Index;
+        }
+    });
+    turn = turn * -1;
+}
 
+//create an event listener that executes the render function 
 
 //handle a player clicking the replay button
