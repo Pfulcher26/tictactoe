@@ -15,3 +15,9 @@ const winningCombinations = {
     seventh: [0, 4, 8],
     eighth: [2, 4, 6]
 }
+
+console.log(winningCombinations.first);
+//variables
+let boardArray = ['', '', '', '', '', '', '', '', '',];
+let currentPlayer = "";
+let winner = "";
