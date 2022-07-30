@@ -56,7 +56,7 @@ function initialize() {
 function render() {
     rendBoard();   //render the board
     rendMessage();  //render a message
-
+    userInput(); //dynamically responds to user input
 }
 
 
@@ -83,11 +83,15 @@ function rendMessage () {
 
 //wait for the user to click a square
 //Seems like I need a function that handles event listeners, waiting for user input before proceeding.  I researched a bit and it doesn't seem like there's any way to hard code Javascript to pause and wait for input other than using a function that needs to be fulfilled by a user action.
-function waitForUserInput () {
-
+function userInput () {
+    //waits for user input
+    //calls the render function, which loops back to WaitForUserInput
+    //The conditions in rend message should eventually end the game
 }
 
-
 //handle a player clicking a square
+//Use jquery to grab elements from HTML
+//create an event listener that executes the render function 
+
 
 //handle a player clicking the replay button
