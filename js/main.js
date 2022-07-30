@@ -38,27 +38,40 @@ const boardTiles = {
 //initialize state variables
 function initialize() {
     boardArray = [null, null, null, null, null, null, null, null, null, null];
-    currentPlayer = 1;
+    currentPlayer = colors.playerOne;
     winner = null;
     render();
 }
 
 function render() {
-    renderBoard();
+    rendBoard();
 }
 
+//kind of confused about how to access the value of the colors object and set it to the current tile.  This function, in theory, works, but also seems incredibly busy.  Gotta be an easier way.  Maybe for each?
 function rendBoard() {
     for(i = 0; i < boardTiles.length; i++) {
         for(j = 0; j < boardArray.length; j++) {
-            let color = boardTiles[i[boardArray[j]]] = colors.value; 
+            let tileColor = boardTiles[i[boardArray[j]]]
+            tileColor.style.background = colors[tileColor];
         }
     }
 }
-// couldn't get this logic to work, so hard coded the nulls
+//Couldn't get this logic to work, so hard coded the nulls
 // function initializeBoard() {
 //     boardArray.forEach((element) => { 
 //         return element = null;
 // })}
+
+//Created a separate function called rendMessage, which I'll next inside of the main render function 
+function rendMessage () {
+    if (winner !== null) {
+        return `It is ${currentPlayer.toUpperCase()}'s turn.`;
+    } else if (winner === "T") {
+        return "It's a tie!";
+    } else {
+        return `Congrats ${winner.toUpperCase()}.  You've won!`;
+    }
+}
 
 initializeBoard();
 
