@@ -1,9 +1,15 @@
 //constants
 const colors = {
     null: 'white',
-    playerOne: 'red',
-    PlayerMinusOne: 'blue'
+    '1': 'red',
+    '-1': 'blue'
 };
+
+// const playerValues = {
+//     playerOne: 1,
+//     playerMinusOne: -1,
+//     null: 0;
+// }
 
 const winningCombinations = {
     first: [0, 1, 2],
@@ -19,7 +25,7 @@ const winningCombinations = {
 //variables
 let boardArray = ['', '', '', '', '', '', '', '', '',];
 let turn = 1
-let currentPlayer = "";
+let currentPlayer = 0;
 let winner = "";
 
 //reusable elements
@@ -67,6 +73,7 @@ function rendBoard() {
         for(j = 0; j < boardArray.length; j++) {
             let tileColor = boardTiles[i[boardArray[j]]]
             tileColor.style.background = colors[tileColor];
+            console.log(tileColor);
         }
     }
 }
@@ -101,7 +108,7 @@ function handle() {
             boardArray[0] = tile1Index;
         }
     });
-    turn = turn * -1;
+    currentPlayer = (parseInt(currentPlayer) * -1).toString;
 }
 
 //create an event listener that executes the render function 
