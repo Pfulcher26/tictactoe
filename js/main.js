@@ -2,7 +2,7 @@
 const colors = {
     null: 'white',
     playerOne: 'red',
-    playerMinusOne: 'blue'
+    PlayerMinusOne: 'blue'
 };
 
 const winningCombinations = {
@@ -43,9 +43,22 @@ function initialize() {
     render();
 }
 
+//Couldn't get this logic to work, so hard coded the nulls
+// function initializeBoard() {
+//     boardArray.forEach((element) => { 
+//         return element = null;
+// })}
+
+
+
+//render state variables to the page
+
 function render() {
-    rendBoard();
+    rendBoard();   //render the board
+    rendMessage();  //render a message
+
 }
+
 
 //kind of confused about how to access the value of the colors object and set it to the current tile.  This function, in theory, works, but also seems incredibly busy.  Gotta be an easier way.  Maybe for each?
 function rendBoard() {
@@ -56,34 +69,23 @@ function rendBoard() {
         }
     }
 }
-//Couldn't get this logic to work, so hard coded the nulls
-// function initializeBoard() {
-//     boardArray.forEach((element) => { 
-//         return element = null;
-// })}
 
 //Created a separate function called rendMessage, which I'll next inside of the main render function 
 function rendMessage () {
     if (winner !== null) {
         return `It is ${currentPlayer.toUpperCase()}'s turn.`;
     } else if (winner === "T") {
-        return "It's a tie!";
+        return "It's a tie!"; 
     } else {
         return `Congrats ${winner.toUpperCase()}.  You've won!`;
     }
 }
 
-initializeBoard();
+//wait for the user to click a square
+//Seems like I need a function that handles event listeners, waiting for user input before proceeding.  I researched a bit and it doesn't seem like there's any way to hard code Javascript to pause and wait for input other than using a function that needs to be fulfilled by a user action.
+function waitForUserInput () {
 
- 
-
-
-
-
-//render state variables to the page
-    //render the board
-    //render a message
-    //wait for the user to click a square
+}
 
 
 //handle a player clicking a square
