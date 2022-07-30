@@ -24,8 +24,7 @@ const winningCombinations = {
 
 //variables
 let boardArray = ['', '', '', '', '', '', '', '', '',];
-let turn = 1
-let currentPlayer = 0;
+let currentPlayer = colors['1'];
 let winner = "";
 
 //reusable elements
@@ -108,7 +107,17 @@ function handle() {
             boardArray[0] = tile1Index;
         }
     });
-    currentPlayer = (parseInt(currentPlayer) * -1).toString;
+    if (currentPlayer === 'red') {
+        currentPlayer = colors['-1']
+    } else {
+        currentPlayer = colors['1']
+    }
+    //currentPlayer = (parseInt(currentPlayer) * -1).toString();
+    //function to determine winner
+}
+
+function determineWinner() {
+
 }
 
 //create an event listener that executes the render function 
