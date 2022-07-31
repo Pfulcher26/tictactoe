@@ -139,4 +139,8 @@ function determineWinner() {
 
 //create an event listener that executes the render function 
 
+
 //handle a player clicking the replay button
+let reset = document.getElementById("Reset")
+reset.addEventListener('click', initialize);
+
