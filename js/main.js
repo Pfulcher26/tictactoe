@@ -1,6 +1,6 @@
 //constants
 const colors = {
-    null: 'white',
+    'null': 'white',
     '1': 'red',
     '-1': 'blue'
 };
@@ -11,20 +11,20 @@ const colors = {
 //     null: 0;
 // }
 
-const winningCombinations = {
-    first: [0, 1, 2],
-    second: [3, 4, 5],
-    third: [6, 7, 8],
-    fourth: [0, 3, 6],
-    fifth: [1, 4, 7],
-    sixth: [2, 5, 8],
-    seventh: [0, 4, 8],
-    eighth: [2, 4, 6]
-}
+const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
 
 //variables
 let boardArray = ['', '', '', '', '', '', '', '', '',];
-let currentPlayer = colors['1'];
+let currentPlayer = "";
 let winner = "";
 
 //reusable elements
@@ -44,7 +44,7 @@ const boardTiles = {
 //initialize state variables
 function initialize() {
     boardArray = [null, null, null, null, null, null, null, null, null, null];
-    currentPlayer = colors.playerOne;
+    currentPlayer = colors['1'];
     winner = null;
     render();
 }
@@ -72,7 +72,6 @@ function rendBoard() {
         for(j = 0; j < boardArray.length; j++) {
             let tileColor = boardTiles[i[boardArray[j]]]
             tileColor.style.background = colors[tileColor];
-            console.log(tileColor);
         }
     }
 }
@@ -91,6 +90,8 @@ function checkForWinner () {
 //wait for the user to click a square
 //Seems like I need a function that handles event listeners, waiting for user input before proceeding.  I researched a bit and it doesn't seem like there's any way to hard code Javascript to pause and wait for input other than using a function that needs to be fulfilled by a user action.
 function userInput () {
+    handle();
+    determineWinner();
     //waits for user input
     //calls the render function, which loops back UserInput
     //The conditions in rend message should eventually end the game
@@ -107,17 +108,33 @@ function handle() {
             boardArray[0] = tile1Index;
         }
     });
+    switchPlayer(); 
+    //currentPlayer = (parseInt(currentPlayer) * -1).toString();
+    //function to determine winner
+}
+
+function switchPlayer() {
     if (currentPlayer === 'red') {
         currentPlayer = colors['-1']
     } else {
         currentPlayer = colors['1']
     }
-    //currentPlayer = (parseInt(currentPlayer) * -1).toString();
-    //function to determine winner
 }
 
+//iterating over a two dimensional array!
 function determineWinner() {
-
+    for(i = 0; i < winningCombinations.length; i++) {
+        for(j = 0; j < innerArray.length; j++) {
+            let index = j[i];
+            let boardIndex = boardArray[index];
+            let total = 0;
+            total += boardIndex;
+            let absoluteTotal = math.absolute(total);
+            if(absoluteTotal === 3) {
+                winner = boardIndex.toString();
+        }
+    }
+    return winner; 
 }
 
 //create an event listener that executes the render function 
