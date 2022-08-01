@@ -2,4 +2,25 @@ td {
     border: 1px solid black;
     height: 50px;
     width: 50px;
+    text-align: center;
     }
+
+    table {
+        margin: 75px;
+    }
+
+    #index-selection {
+        align-items: center; 
+    }
+
+    body {
+        align-items: center;
+    }
+
+
+
+/* td {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    } */
