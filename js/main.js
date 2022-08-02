@@ -57,7 +57,7 @@ resetButtonSelection.addEventListener('click', function () {
     }
 })
 
-//function to check for winner
+//function to check for winner by comparing array values to possible winning board combinations
 function checkForWinner() {
     for(i=0; i<board.length; i++) {
         if(board[0] === 'X' && board[1] === 'X' && board[2] === 'X' || board[0] === 'O' && board[1] === 'O' && board[2] === 'O') {
