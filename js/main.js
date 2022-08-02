@@ -48,12 +48,9 @@ resetButtonSelection.addEventListener('click', function () {
     let winner = ""
     let userIndexSelection = 0
     let tileSelection = ""
-    for (const prop in gameBoard) {
-        counter = 0;
-        let currentProp = gameBoard.prop
-        currentProp = document.getElementById(`tile ${counter}`);
-        currentProp.innerText = counter; 
-        counter += 1;
+    for (let i = 0; i < board.length; i++) {
+        let currentProp = document.getElementById(`tile ${i}`);
+        currentProp.innerText = i; 
     }
 })
 
